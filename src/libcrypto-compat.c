@@ -11,7 +11,7 @@
 
 #include <string.h>
 #include "libcrypto-compat.h"
-
+#if OPENSSL_VERSION_NUMBER < 0x10100000L
 int RSA_set0_key(RSA *r, BIGNUM *n, BIGNUM *e, BIGNUM *d)
 {
     /* If the fields n and e in r are NULL, the corresponding input
@@ -303,3 +303,4 @@ unsigned long OpenSSL_version_num(void)
 {
     return SSLeay();
 }
+#endif
